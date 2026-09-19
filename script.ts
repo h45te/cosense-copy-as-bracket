@@ -1,3 +1,5 @@
+declare var scrapbox: any;
+
 function addCopyButton() {
 	const div = document.createElement('div');
 	const btn = document.createElement('button');
@@ -18,4 +20,10 @@ function addCopyButton() {
     container.appendChild(div);
 }
 
-addCopyButton();
+function check() {
+    if (scrapbox.Layout === 'page' && document.getElementById('copy-as-bracket') === null) {
+        addCopyButton();
+    }
+}
+scrapbox.on('layout:changed', check);
+check();
